@@ -1,37 +1,28 @@
 package com.example.StartUpSync.entity;
 
-import com.example.StartUpSync.entity.User;
-import jakarta.persistence.*;
 import lombok.Data;
 
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Post")
 @Data
-public class Post {
-
+@Table(name = "Message")
+public class Message {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private Team team;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @Column(name = "content", length = 255)
-    private String content;
-
-    @Column(name = "image_url", length = 255)
-    private String imageUrl;
-
-    @Column(name = "like_count")
-    private int likeCount;
+    @Column(name = "text", nullable = false, columnDefinition = "TEXT")
+    private String text;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
@@ -44,10 +35,6 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deleted_at")
     private Date deletedAt;
-
-
-    public Post() {
-    }
 
 }
 

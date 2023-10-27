@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SkillRepository extends JpaRepository<Skill, Long> {
-	List<Skill> findAllByUser_Id(Long userId);
+	List<Skill> findByUserId(Long userId);
 }

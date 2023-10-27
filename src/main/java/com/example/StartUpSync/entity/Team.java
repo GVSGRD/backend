@@ -11,11 +11,20 @@ import java.util.Date;
 public class Team {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
     private String name;
+
+    @Column(name = "tagline", length = 100)
+    private String tagLine;
+
+    @Column(name = "bio")
+    private String bio;
+
+    @Column(name = "profile_image_url", length = 255)
+    private String profileImageUrl;
 
     @Column(name = "description")
     private String description;

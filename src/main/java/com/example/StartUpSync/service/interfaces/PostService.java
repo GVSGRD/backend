@@ -6,6 +6,10 @@ import com.example.StartUpSync.entity.User;
 import java.util.List;
 
 public interface PostService {
-	List<Post> getPosts();
-	Post getPost(int postId);
+	Post createPost(Post post);
+	Post findPostById(Long postId);
+	List<Post> findAllPosts();
+	Post updatePost(Post post);
+	void deletePost(Long postId);
+
 }

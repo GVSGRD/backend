@@ -5,6 +5,10 @@ import java.util.List;
 import com.example.StartUpSync.entity.User;
 
 public interface UserService {
-	List<User> getUsers();
-	User getUser(int userId);
+	User createUser(User user);
+	User findUserById(Long userId);
+	List<User> findAllUsers();
+	User updateUser(User user);
+	void deleteUser(Long userId);
 }
+

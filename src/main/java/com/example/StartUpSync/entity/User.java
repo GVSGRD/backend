@@ -34,7 +34,7 @@ public class User {
     private String bio;
 
     @Column(name = "profile_image_url", length = 255)
-    private String profilePictureUrl;
+    private String profileImageUrl;
 
     @Column(name = "location", length = 100)
     private String location;
@@ -68,7 +68,7 @@ public class User {
 		this.password = password;
 		this.email = email;
 		this.bio = bio;
-		this.profilePictureUrl = profilePictureUrl;
+		this.profileImageUrl = profilePictureUrl;
 		this.location = location;
 		this.github = github;
 		this.linkedin = linkedin;
@@ -79,7 +79,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + ", email="
-				+ email + ", bio=" + bio + ", profilePictureUrl=" + profilePictureUrl + ", location=" + location
+				+ email + ", bio=" + bio + ", profilePictureUrl=" + profileImageUrl + ", location=" + location
 				+ ", github=" + github + ", linkedin=" + linkedin + ", createdAt=" + createdAt
 				+ ", updatedAt=" + updatedAt + "]";
 	}

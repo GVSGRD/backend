@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +18,37 @@ public class SkillController {
 	@Autowired
 	private SkillService skillService;
 
-	@GetMapping("get/{userId}")
+	@PostMapping("/create")
+	public ResponseEntity<Skill> createSkill(@RequestBody Skill skill) {
+		Skill resp = skillService.createSkill(skill);
+		return new ResponseEntity<Skill>(resp, HttpStatus.CREATED);
+	}
+
+	@GetMapping("/{skillId}")
+	public ResponseEntity<Skill> getSkillById(@PathVariable Long skillId) {
+		Skill resp = skillService.findSkillById(skillId);
+		return new ResponseEntity<Skill>(resp, HttpStatus.OK);
+	}
+
+	@GetMapping("/all")
+	public ResponseEntity<List<Skill>> getAllSkills() {
+		List<Skill> resp = skillService.findAllSkills();
+		return new ResponseEntity<List<Skill>>(resp, HttpStatus.OK);
+	}
+
+	@PutMapping("/update")
+	public ResponseEntity<Skill> updateSkill(@RequestBody Skill skill) {
+		Skill resp = skillService.updateSkill(skill);
+		return new ResponseEntity<Skill>(resp, HttpStatus.OK);
+	}
+
+	@DeleteMapping("/delete/{skillId}")
+	public ResponseEntity<Long> deleteSkill(@PathVariable Long skillId) {
+		skillService.deleteSkill(skillId);
+		return new ResponseEntity<Long>(skillId, HttpStatus.NO_CONTENT);
+	}
+
+	@GetMapping("user/{userId}")
 	public ResponseEntity<List<Skill>> getSkillsByUserId(@PathVariable("userId") Long userId){
 
 		List<Skill> skill = skillService.getSkillsByUserId(userId);
@@ -29,4 +57,5 @@ public class SkillController {
 	}
 
 }
+
 
