@@ -3,12 +3,14 @@ package com.example.StartUpSync.service.interfaces;
 import java.util.List;
 
 import com.example.StartUpSync.entity.User;
+import com.example.StartUpSync.payload.UserRequestDto;
+import com.example.StartUpSync.payload.UserResponseDto;
 
 public interface UserService {
-	User createUser(User user);
-	User findUserById(Long userId);
-	List<User> findAllUsers();
-	User updateUser(User user);
+	UserResponseDto createUser(UserRequestDto userRequestDto);
+	UserResponseDto findUserById(Long userId);
+	List<UserResponseDto> findAllUsers();
+	UserResponseDto updateUser(UserRequestDto user, Long userId);
 	void deleteUser(Long userId);
 }
 
