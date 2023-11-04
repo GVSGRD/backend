@@ -4,6 +4,8 @@ package com.example.StartUpSync.controller;
 import java.util.List;
 
 import com.example.StartUpSync.entity.Skill;
+import com.example.StartUpSync.payload.UserRequestDto;
+import com.example.StartUpSync.payload.UserResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,27 +23,28 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/create")
-	public ResponseEntity<User> createUser(@RequestBody User user) {
-		User resp = userService.createUser(user);
-		return new ResponseEntity<User>(resp, HttpStatus.CREATED);
+	public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto userRequestDto) {
+		System.out.println(userRequestDto.toString());
+		UserResponseDto resp = userService.createUser(userRequestDto);
+		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{userId}")
-	public ResponseEntity<User> getUserById(@PathVariable Long userId) {
-		User resp = userService.findUserById(userId);
-		return new ResponseEntity<User>(resp, HttpStatus.OK);
+	public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long userId) {
+		UserResponseDto resp = userService.findUserById(userId);
+		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.OK);
 	}
 
 	@GetMapping("/all")
-	public ResponseEntity<List<User>> getAllUsers() {
-		List<User> resp =  userService.findAllUsers();
-		return new ResponseEntity<List<User>>(resp, HttpStatus.OK);
+	public ResponseEntity<List<UserResponseDto>> getAllUsers() {
+		List<UserResponseDto> resp =  userService.findAllUsers();
+		return new ResponseEntity<List<UserResponseDto>>(resp, HttpStatus.OK);
 	}
 
-	@PutMapping("/update")
-	public ResponseEntity<User> updateUser(@RequestBody User user) {
-		User resp = userService.updateUser(user);
-		return new ResponseEntity<User>(resp, HttpStatus.OK);
+	@PutMapping("/update/{userId}")
+	public ResponseEntity<UserResponseDto> updateUser(@RequestBody UserRequestDto user, @PathVariable Long userId) {
+		UserResponseDto resp = userService.updateUser(user, userId);
+		return new ResponseEntity<UserResponseDto>(resp, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/delete/{userId}")

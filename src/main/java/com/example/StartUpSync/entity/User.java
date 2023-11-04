@@ -1,12 +1,18 @@
 package com.example.StartUpSync.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "User")
 public class User {
 
@@ -52,37 +58,4 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
     private Date updatedAt;
-
-
-    public User() {
-		super();
-	}
-    
-    public User(int id, String name, String userName, String password, String email, String bio,
-			String profilePictureUrl, String location, String github, String linkedin, Date createdAt,
-			Date updatedAt) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.userName = userName;
-		this.password = password;
-		this.email = email;
-		this.bio = bio;
-		this.profileImageUrl = profilePictureUrl;
-		this.location = location;
-		this.github = github;
-		this.linkedin = linkedin;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", userName=" + userName + ", password=" + password + ", email="
-				+ email + ", bio=" + bio + ", profilePictureUrl=" + profileImageUrl + ", location=" + location
-				+ ", github=" + github + ", linkedin=" + linkedin + ", createdAt=" + createdAt
-				+ ", updatedAt=" + updatedAt + "]";
-	}
-    
-    
 }
