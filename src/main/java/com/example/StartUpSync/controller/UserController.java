@@ -17,6 +17,7 @@ import com.example.StartUpSync.service.interfaces.UserService;
 
 @Controller
 @RequestMapping("/user")
+@CrossOrigin("http://localhost:3000")
 public class UserController {
 
 	@Autowired

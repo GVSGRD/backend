@@ -12,6 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/team")
+@CrossOrigin("http://localhost:3000")
 public class TeamController {
 
     @Autowired

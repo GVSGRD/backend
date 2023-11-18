@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/message")
+@CrossOrigin("http://localhost:3000")
 public class MessageController {
     @Autowired
     private MessageService messageService;

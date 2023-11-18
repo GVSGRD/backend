@@ -13,6 +13,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/skill")
+@CrossOrigin("http://localhost:3000")
 public class SkillController {
 
 	@Autowired

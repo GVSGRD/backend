@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/team-user")
+@CrossOrigin("http://localhost:3000")
 public class TeamUserController {
     @Autowired
     private TeamUserService teamUserService;
