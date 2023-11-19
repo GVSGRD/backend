@@ -1,5 +1,6 @@
 package com.example.StartUpSync.controller;
 
+import com.example.StartUpSync.entity.Skill;
 import com.example.StartUpSync.entity.TeamUser;
 import com.example.StartUpSync.service.interfaces.TeamUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +46,14 @@ public class TeamUserController {
         teamUserService.deleteTeamUser(teamUserId);
         return new ResponseEntity<>(teamUserId, HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("team/{teamId}")
+    public ResponseEntity<List<TeamUser>> getSkillsByUserId(@PathVariable("teamId") Long teamId){
+
+        List<TeamUser> resp = teamUserService.getUsersByTeamId(teamId);
+        return new ResponseEntity<List<TeamUser>>(resp, HttpStatus.OK);
+
+    }
+
 }
 

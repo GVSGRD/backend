@@ -1,5 +1,6 @@
 package com.example.StartUpSync.service.interfaces;
 
+import com.example.StartUpSync.entity.Skill;
 import com.example.StartUpSync.entity.TeamUser;
 
 import java.util.List;
@@ -10,5 +11,6 @@ public interface TeamUserService {
     List<TeamUser> findAllTeamUsers();
     TeamUser updateTeamUser(TeamUser teamUser);
     void deleteTeamUser(Long teamUserId);
+    List<TeamUser> getUsersByTeamId(Long teamId);
 }
 

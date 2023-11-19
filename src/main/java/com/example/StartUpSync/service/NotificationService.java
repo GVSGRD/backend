@@ -1,6 +1,7 @@
 package com.example.StartUpSync.service;
 
 import com.example.StartUpSync.entity.Notification;
+import com.example.StartUpSync.entity.Skill;
 import com.example.StartUpSync.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +36,11 @@ public class NotificationService implements com.example.StartUpSync.service.inte
     @Override
     public void deleteNotification(Long notificationId) {
         notificationRepository.deleteById(notificationId);
+    }
+
+    @Override
+    public List<Notification> getNotificationsByUserId(Long userId) {
+        return notificationRepository.findByUserId(userId);
     }
 }
 

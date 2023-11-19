@@ -1,6 +1,7 @@
 package com.example.StartUpSync.controller;
 
 import com.example.StartUpSync.entity.Notification;
+import com.example.StartUpSync.entity.Skill;
 import com.example.StartUpSync.service.interfaces.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,14 @@ public class NotificationController {
     public ResponseEntity<Long> deleteNotification(@PathVariable Long notificationId) {
         notificationService.deleteNotification(notificationId);
         return new ResponseEntity<>(notificationId, HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("user/{userId}")
+    public ResponseEntity<List<Notification>> getSkillsByUserId(@PathVariable("userId") Long userId){
+
+        List<Notification> notifications = notificationService.getNotificationsByUserId(userId);
+        return new ResponseEntity<List<Notification>>(notifications, HttpStatus.OK);
+
     }
 }
 

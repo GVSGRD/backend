@@ -30,5 +30,10 @@ public class TeamUserService implements com.example.StartUpSync.service.interfac
     public void deleteTeamUser(Long teamUserId) {
         teamUserRepository.deleteById(teamUserId);
     }
+
+    @Override
+    public List<TeamUser> getUsersByTeamId(Long teamId) {
+        return teamUserRepository.findByTeamId(teamId);
+    }
 }
 
